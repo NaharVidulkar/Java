@@ -44,15 +44,15 @@ class Lec_5_NonAdjacentMaxSum {
     } 
     //                  Tabulation + Space Optimization
     public static int NonAdjacentMaxSumTAB2(int idx, int[] arr){
-        int prev2 = arr[0];
+        int prev2 = 0;
         int prev = arr[0];
-        int curr = arr[0];
-        for(int i = 1; i <= idx;i++){
+
+        for(int i = 1; i < idx;i++){
             int pick = arr[i];
-            if(i - 2 >= 0) pick += prev2;
+            if(i > 1) pick += prev2;
             int not_pick = 0 + prev;
             prev2 = prev;
-            curr = Math.max(pick,not_pick);
+            int curr = Math.max(pick,not_pick);
             prev = curr;
         }
         return prev;
